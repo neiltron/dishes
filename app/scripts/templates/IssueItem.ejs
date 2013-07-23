@@ -1,0 +1,10 @@
+<span class='span8 offset1 title_column'>
+  <strong><%= title %></strong>
+  <small>
+    <a href='<%= repository.html_url %>' target='_blank'><%= repository.owner.login %>/<%= repository.name %></a>
+    – <span data-livestamp='<%= created_at %>'><%= created_at %></span>
+    <a href='<%= html_url %>' target='_blank'>#</a>
+  </small>
+
+</span>
+<button class='btn btn-success span2'>Add to Today</button>

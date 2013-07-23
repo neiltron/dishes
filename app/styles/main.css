@@ -1,0 +1,24 @@
+body {
+    background: #fafafa;
+}
+
+.hero-unit {
+    margin: 50px auto 0 auto;
+    width: 300px;
+}
+
+#content {
+  margin-top: 50px;
+}
+
+#issues_list li {
+  font-size: 12pt;
+  margin: 20px 0;
+}
+  #issues_list li .title_column strong {
+    display: block;
+  }
+  #issues_list li .title_column small {
+    font-size: 9pt;
+    font-weight: 200;
+  }
