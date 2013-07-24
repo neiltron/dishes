@@ -30,6 +30,9 @@ define([
         },
 
         render: function () {
+            $('ul.nav li').removeClass('active');
+            $('ul.nav li:first').addClass('active')
+
             $(this.el).html(this.template);
 
             this.addAll();

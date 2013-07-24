@@ -15,7 +15,6 @@ define([
 
         initialize: function  () {
             Issues.bind('add', this.addOne, this);
-            Issues.bind('change', this.render, this);
             Issues.bind('reset', this.render, this);
         },
 
@@ -31,7 +30,9 @@ define([
         },
 
         render: function () {
-            console.log('render today')
+            $('ul.nav li').removeClass('active');
+            $('ul.nav li:last').addClass('active')
+
             $(this.el).html(this.template);
 
             this.addAll();
