@@ -14,14 +14,22 @@ define([
             'today':        'showToday'
         },
 
-        showIssues: function (wut) {
-            var issuesList = new IssuesList();
-            issuesList.render();
+        showIssues: function () {
+            this.showView(new IssuesList());
         },
 
         showToday: function () {
-            var todayList = new TodayList();
-            todayList.render();
+            this.showView(new TodayList());
+        },
+
+        showView: function (view) {
+            if (typeof this.currentView !== 'undefined') {
+                this.currentView.undelegateEvents();
+                this.currentView.remove();
+            }
+
+            this.currentView = view;
+            $('#content').html(this.currentView.render().el);
         }
     });
 

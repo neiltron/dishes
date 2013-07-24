@@ -4,9 +4,8 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'templates',
-    'collections/Today-collection'
-], function ($, _, Backbone, JST, Today) {
+    'templates'
+], function ($, _, Backbone, JST) {
     'use strict';
 
     var IssueitemView = Backbone.View.extend({
@@ -15,13 +14,21 @@ define([
         className: 'clearfix',
 
         events: {
-            'click button': 'addToToday'
+            'click button': 'toggleToday'
         },
 
-        addToToday: function (e) {
+        initialize: function () {
+            this.model.bind('change', this.render, this);
+        },
+
+        toggleToday: function (e) {
             if (typeof e !== 'undefined') { e.preventDefault(); }
 
-            Today.create(this.model.attributes);
+            if (!this.model.get('active')) {
+                this.model.set('active', true);
+            } else {
+                this.model.set('active', false);
+            }
         },
 
         render: function () {

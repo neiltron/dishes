@@ -11,12 +11,11 @@ define([
     'use strict';
 
     var IssuesView = Backbone.View.extend({
-        el: $('#content'),
         template: JST['app/scripts/templates/Issues.ejs'],
 
         initialize: function  () {
             Issues.bind('add', this.addOne, this);
-            Issues.bind('change', this.render, this);
+            Issues.bind('reset', this.render, this);
         },
 
         addAll: function () {
@@ -34,6 +33,8 @@ define([
             $(this.el).html(this.template);
 
             this.addAll();
+
+            return this;
         }
     });
 

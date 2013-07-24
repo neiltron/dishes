@@ -5,23 +5,22 @@ define([
     'underscore',
     'backbone',
     'templates',
-    'collections/Today-collection',
+    'collections/Issues-collection',
     'views/TodayItem-view'
-], function ($, _, Backbone, JST, Today, ItemView) {
+], function ($, _, Backbone, JST, Issues, ItemView) {
     'use strict';
 
     var TodayView = Backbone.View.extend({
-        el: $('#content'),
         template: JST['app/scripts/templates/Today.ejs'],
 
         initialize: function  () {
-            Today.bind('add', this.addOne, this);
-            Today.bind('change', this.render, this);
-            Today.bind('reset', this.render, this);
+            Issues.bind('add', this.addOne, this);
+            Issues.bind('change', this.render, this);
+            Issues.bind('reset', this.render, this);
         },
 
         addAll: function () {
-            _.each(Today.models, function (item) {
+            _.each(Issues.where({ active: true }), function (item) {
                 this.addOne(item);
             }, this);
         },
@@ -32,10 +31,12 @@ define([
         },
 
         render: function () {
-            console.log(Today)
+            console.log('render today')
             $(this.el).html(this.template);
 
             this.addAll();
+
+            return this;
         }
     });
 
