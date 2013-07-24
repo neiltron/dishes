@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "livestampjs": "~1.1.2",
-    "moment": "~2.1.0"
+    "moment": "~2.1.0",
+    "backbone.localStorage": "~1.1.6"
   }
 }
